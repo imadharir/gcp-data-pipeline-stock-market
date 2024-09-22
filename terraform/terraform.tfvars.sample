@@ -1,0 +1,7 @@
+project_id  = "your-project_id"
+topic_name  = "your-topic_name"
+subscription_name   = "your-subscription_name"
+bucket_name = "your-bucket-name"
+bq_dataset  = "your-bq-dataset"
+bq_table    = "your-bq-table"
+function_bucket_name = "your-second-bucket-name"

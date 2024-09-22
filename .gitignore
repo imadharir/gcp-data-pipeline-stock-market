@@ -1,0 +1,11 @@
+stockmarketrealtimedataanalysi-0a3e4599e01f.json
+.env
+my_venv
+terraform/terraform.tfvars
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+.terraform.lock.hcl
+.terraform
+#StockMarketDiagram.jpg
+StockMarketDiagram.xml
+StockMarketDiagram.drawio
