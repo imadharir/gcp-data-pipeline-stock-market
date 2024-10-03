@@ -1,4 +1,4 @@
-# Google Cloud Pub/Sub Infrastructure with Terraform
+# Stock Market Real Time Data Analysis
 
 This project automates the deployment of Google Cloud Pub/Sub resources using Terraform. The infrastructure includes a Pub/Sub topic and subscription, allowing for messaging between different components of the system.
 
