@@ -1,6 +1,6 @@
 # Stock Market Real Time Data Analysis
-
-This project automates the deployment of Google Cloud Pub/Sub resources using Terraform. The infrastructure includes a Pub/Sub topic and subscription, allowing for messaging between different components of the system.
+&nbsp;&nbsp;This project is focused on building a data pipeline for real-time stock market data analysis using Google Cloud Platform (GCP) and other open-source technologies. The pipeline ingests, processes, and analyzes stock market data to provide valuable insights.
+&nbsp;&nbsp;This project automates the deployment of Google Cloud Pub/Sub resources using Terraform. The infrastructure includes a Pub/Sub topic and subscription, allowing for messaging between different components of the system.
 
 ## Project Architecture
 
@@ -50,6 +50,7 @@ The Cloud Function is triggered when a JSON file is uploaded to the Cloud Storag
 - Zip file containing the Cloud Function code (main.py and requirements.txt)
 
 ## How to Use
+### Terraform Setup
 
 1. **Clone the repository**:
 
@@ -105,6 +106,32 @@ The Cloud Function is triggered when a JSON file is uploaded to the Cloud Storag
 6. **Upload the Cloud Function zip file**: 
 Ensure the zip file containing the Cloud Function code (main.py, requirements.txt) is in the correct path and gets uploaded to the specified bucket.
 
+### dbt Setup
+This section describes the integration of dbt (Data Build Tool) for data transformation and modeling within the project.
+1. **Set `DBT_PROFILES_DIR` environment variable**
+2. **Change directory:**
+```bash
+cd dbt_integration
+```
+3. **Modify the file `profiles.yml` with your own connection credentials:**
+A `profiles.yml` file should be configured with the necessary details for connecting to the BigQuery data warehouse.
+4. **Set up Application Default Credentials:**
+```bash 
+gcloud init
+gcloud auth application-default login
+```
+5. **Run dbt commands:**
+**Models**: The `myModel.sql` file contains the transformations applied to the stock market data to clean, aggregate, and enhance the dataset.
+**Tests**: Custom tests, such as `not_null_all_columns.sql`, have been implemented to validate the data integrity and ensure no null values are present in the critical columns.
+```bash
+dbt run
+dbt test
+```
+Or 
+```bash 
+dbt build
+``` 
+
 ## Cleanup
 
 To delete the resources created by Terraform, you can run:
@@ -113,7 +140,3 @@ To delete the resources created by Terraform, you can run:
 terraform destroy
 ```
 
-<span style="color:red">PS:</span>
-<span>I have deleted the dataset, the table, the buckets, and disabled the APIs (BigQuery, Functions) to not to be charged. </span>
-<span>=> Recreate them if needed</span>
-![dataset](dataset.jpg)
