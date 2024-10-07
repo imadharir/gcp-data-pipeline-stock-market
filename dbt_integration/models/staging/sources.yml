@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: stock_market
+    database: stockmarketrealtimedataanalysi  
+    schema: stock_market  
+    tables:
+      - name: stockMarket
+      
+

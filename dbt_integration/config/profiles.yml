@@ -1,0 +1,9 @@
+dbt_integration:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: stockmarketrealtimedataanalysi
+      dataset: dbt_dataset
+      threads: 4

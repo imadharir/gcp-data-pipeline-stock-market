@@ -85,7 +85,7 @@ The Cloud Function is triggered when a JSON file is uploaded to the Cloud Storag
    ```
 3. **Initialize Terraform**:
     ```bash
-    terraform init
+    terraform initv
     ```
 
 
@@ -112,3 +112,8 @@ To delete the resources created by Terraform, you can run:
 ```bash
 terraform destroy
 ```
+
+<span style="color:red">PS:</span>
+<span>I have deleted the dataset, the table, the buckets, and disabled the APIs (BigQuery, Functions) to not to be charged. </span>
+<span>=> Recreate them if needed</span>
+![dataset](dataset.jpg)

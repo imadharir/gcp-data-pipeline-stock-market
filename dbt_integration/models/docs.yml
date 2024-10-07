@@ -1,0 +1,54 @@
+models:
+  - name: myModel
+    columns:
+      - name: Index
+        description: >-
+          | Index          |
+          definition                                                        |
+
+          |-------------|--------------------------------------------------|
+
+          | HSI            | The Hang Seng
+          Index                                      |
+
+          | NYA           | The New York Stock Exchange Index              |
+
+          | IXIC           | The Nasdaq
+          Composite                                   |
+
+          | N100         | Euronext
+          100                                                   |
+
+          | N225         | Nikkei
+          225                                                       |
+
+          | NSEI          | The NIFTY 50
+          Index                                         |
+
+          | SSMI         | The Swiss Market
+          Index                                   |
+
+          | TWII          | Taiwan stock market
+          index                              |
+
+          | GDAXI       | German stock
+          index                                        |
+
+          | GSPTSE     | Canadian stock market index                          |
+
+          | J203.JO     | Stock market index in South Africa                 |
+
+          | 000001.SS | Shanghai Stock Exchange                               |
+
+          | 399001.SZ | Shenzhen
+          Index                                              |
+    description: The 'myModel' is a dbt model that processes stock market data. It
+      starts by staging the data from the 'stg_stockMarket' table in the
+      'dbt_dataset' dataset of the 'stockmarketrealtimedataanalysi' project. The
+      model partitions the data by 'Date' and 'Index' and orders it by 'Date'.
+      It then deduplicates the data by selecting the first row of each
+      partition. The model finally selects all columns from the deduplicated
+      data, concatenates 'Date' and 'Index' to create a unique 'id', and orders
+      the data by this 'id'. The output of this model is a table with columns
+      'id', 'CloseUSD', 'Adj_Close', 'Close', 'Open', 'Low', 'Volume', 'High',
+      'Date', and 'Index'.

@@ -1,0 +1,63 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dbt_integration'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dbt_integration'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  dbt_integration:
+    staging:
+        +materialized: view
+    models:
+      - name: myModel
+        tests:
+          - not_null_all_columns
+        columns:
+          - name: id
+            description: Unique identifier for each row in the table. This column is generated during the ELT process and serves as the primary key. 
+            tests:
+              - unique
+              - not_null
+          - name: Date
+            description: The date corresponding to the stock market data entry. This is a key column for time series analysis, allowing the data to be ordered chronologically.
+          - name: Open
+            description: The opening price of the index for the specified date. Represents the price at which the first transaction was made at market open.
+          - name: High
+            description: The highest price of the index during the trading day for the specified date.
+          - name: Close
+            description: The closing price of the index for the specified date. This price reflects the final transaction of the trading day and is commonly used for historical comparisons.
+          - name: CloseUSD
+            description: The closing price in USD for the index. Useful for comparing international indices using a common currency.
+          - name: Adj_Close
+            description: The adjusted closing price of the index for the specified date, factoring in splits, dividends, and other adjustments.
+          - name: Volume
+            description: The number of shares or contracts traded during the specified trading day. This column provides insight into the liquidity and trading activity of the index.
+    +materialized: table
+    
+    
+    

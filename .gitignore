@@ -9,3 +9,6 @@ terraform/terraform.tfstate.backup
 #StockMarketDiagram.jpg
 StockMarketDiagram.xml
 StockMarketDiagram.drawio
+dbt_integration/config/.user.yml
+dbt_integration/logs
+dbt_integration/target

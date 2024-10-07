@@ -1,0 +1,1 @@
+select * from {{ source('stock_market', 'stockMarket') }} 
