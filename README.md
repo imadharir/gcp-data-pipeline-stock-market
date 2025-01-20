@@ -17,7 +17,7 @@ Stock Market Real Time Data Analysis <br>
 ### Resources Deployed
 
 - **Pub/Sub Topic**: A topic for sending messages.
-- **Pub/Sub Subscription**: A subscription to recpip install dotenveive messages from the topic.
+- **Pub/Sub Subscription**: A subscription to receive messages from the topic.
 - **Cloud Storage Bucket**: A general-purpose bucket for data storage and ingestion.
 - **Cloud Function Storage Bucket**: A bucket to store the zip file containing the Cloud Function code.
 - **Cloud Function**: A serverless function triggered by Cloud Storage events to process data and load it into BigQuery.
